@@ -1,0 +1,29 @@
+
+                                                                               ABSTRACT
+
+This case study presents the development of a comprehensive database management system for working on the non-tax revenue on central government from the financial year
+2021-2023 (as provided in the Union Budget). Non-tax revenue refers to the income that the government generates from sources other than taxation. These revenues are a
+significant part of the government's overall revenue collection and are used to finance various government expenditures and initiatives. Non-tax revenue sources can
+vary and include a wide range of receipts. Therefore, there is a necessity for a robust data management solution to facilitate the storage, retrieval and analysis of
+the scheme-wise distributed data of non-tax revenue.
+
+The context of this case study is the creation of a specialized DBMS  to handle diverse non-tax revenue sources. The DBMS structure accommodates interest income,
+dividends, fees, penalties, grants, and more. It empowers officials to retrieve specific revenue data, generate insightful reports, ensure data accuracy, and control
+access. This streamlined approach enhances financial management and transparency.
+
+Methodologically, the study involves the design of relational schema optimized for the network model of scheme-wise analysis of non-tax income. The DBMS architecture
+encompasses a relational model designed to effectively manage the scheme-wise, sector-wise and different type of non-tax income. Furthermore, the system incorporates
+a user-friendly interface for data entry, retrieval and visualization.
+
+The key outcome of the case study is a fully functional Scheme-wise non-tax revenue of union government that facilitates efficient storage, retrieval, and analysis of
+income details. By integrating the different schemes, pipelines and categories of non-tax income, the system provides researches, economists, and analysts with a
+powerful tool to explore and understand the patterns and trends of union budget allocation through non-tax revenue. We also get to know how the budget is allocated to
+different schemes and the expenses incurred in different sectors.
+
+The implication of this case study can extend beyond academics and research. This DBMS serves as a valuable resource for predictions and analysis of scheme wise
+non-tax revenue thereby acts as a tool to improve the allocation of non-tax revenue in union budget. As future enhancements, the system can be extended to the other
+revenue types and can also include the expense aspects to make this system a full-fledged database for the analysis of the whole Union Budget.
+
+In conclusion, the Non-Tax Revenue Database Management System exemplifies the successful application of DBMS principles to address the complexities of managing revenue
+data across government schemes and categories. This case study underscores the pivotal role of database technology in advancing our understanding and analysis of tax
+allocation, revenue and expense of union government.
