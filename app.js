@@ -4,7 +4,7 @@ const { urlencoded } = require('body-parser');
 const express = require('express');
 const app = express();
 require('dotenv').config();
-const pool = require("./Postgres DB/DB") // SetUp Postgres Database 
+const pool = require("../Postgres DB/DB") // SetUp Postgres Database 
 
 
 //Middleware:
@@ -15,6 +15,15 @@ app.use(express.static(__dirname + "/Public/"));
 
 //const homepageRoute = require("./Routes");
 //app.use("/", homepageRoutes);
+app.get("/", async (req,res) => {
+    try {
+        const value = await pool.query("select * from Revenue;");
+        res.json(value.rows);
+    } catch (err) {
+        console.log(err);
+    }
+    
+})
 
 
 // Server Setup
