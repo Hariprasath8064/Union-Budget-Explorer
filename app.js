@@ -4,7 +4,7 @@ const { urlencoded } = require('body-parser');
 const express = require('express');
 const app = express();
 require('dotenv').config();
-const pool = require("../Postgres DB/DB") // SetUp Postgres Database 
+const pool = require("../Union-Budget-Explorer/Postgres DB/DB"); // SetUp Postgres Database 
 
 
 //Middleware:
@@ -27,7 +27,7 @@ app.get("/", async (req,res) => {
 
 
 // Server Setup
-const port = process.env.PORT || 5000
+const port = process.env.PORT || 5000;
 
 app.listen(port, (req,res) => {
     console.log("Server Is Listening on Port " + port + "....");
