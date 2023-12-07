@@ -1,5 +1,6 @@
 const Pool = require('pg').Pool;
 
+
 const pool = new Pool({
     user: "postgres",
     password: "Naganathan@15",
@@ -8,4 +9,4 @@ const pool = new Pool({
     database: "Non-Tax Revenue"
 });
 
-module.exports = pool;
+module.exports = {pool};

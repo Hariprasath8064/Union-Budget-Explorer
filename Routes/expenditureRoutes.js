@@ -1,9 +1,8 @@
-const express = require('express');
-const router = express.Router("../Controllers/expenditureController");
-const expenditureController = require();
+const express = require("express");
+const router = express.Router();
+const expenditureController = require("../Controllers/expenditureController");
 
-router.get("/expenditure", expenditureController);
+router.get("/expenditure", expenditureController.getallExpenditure);
 
-router.post("/expenditure", expenditureController);
 
 module.exports = router;

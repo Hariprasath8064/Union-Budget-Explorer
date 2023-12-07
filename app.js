@@ -15,15 +15,16 @@ app.use(express.static(__dirname + "/Public/"));
 
 //const homepageRoute = require("./Routes");
 //app.use("/", homepageRoutes);
-app.get("/", async (req,res) => {
-    try {
-        const value = await pool.query("select * from Revenue;");
-        res.json(value.rows);
-    } catch (err) {
-        console.log(err);
-    }
-    
-})
+
+
+// Expenditure Routes
+const getallexpenditureRoute = require("./Routes/expenditureRoutes");
+app.use("/", getallexpenditureRoute); 
+
+
+// Non-Tax Revenue Routes
+const getallnontaxRevenue = require("./Routes/getallnontaxRoutes");
+app.use("/", getallnontaxRevenue);
 
 
 // Server Setup

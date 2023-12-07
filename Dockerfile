@@ -1,11 +1,11 @@
 # Using the official Node.js runtime as parent image
-FROM node:20
+FROM node:18
 
 # Install pm2 globally
-RUN npm install -g pm2
+RUN npm install -g nodemon
 
 # Set the working directory in the container
-WORKDIR /src/app
+WORKDIR /usr/src/app
 
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
@@ -20,4 +20,4 @@ COPY . .
 EXPOSE 8080
 
 # Start the Node.js application using pm2
-CMD ["pm2", "start", "app.js"]
+CMD ["nodemon", "app.js"]
