@@ -17,14 +17,34 @@ app.use(express.static(__dirname + "/Public/"));
 //app.use("/", homepageRoutes);
 
 
-// Expenditure Routes
-const getallexpenditureRoute = require("./Routes/expenditureRoutes");
+// Get all Expenditures Routes
+const getallexpenditureRoute = require("./Routes/getallexpenditureRoutes");
 app.use("/", getallexpenditureRoute); 
 
 
-// Non-Tax Revenue Routes
+// Get all Non-Tax Revenues Routes
 const getallnontaxRevenue = require("./Routes/getallnontaxRoutes");
 app.use("/", getallnontaxRevenue);
+
+// Get all Schemes Routes
+const getallScheme = require("./Routes/getallschemeRoutes");
+app.use("/", getallScheme);
+
+
+// Search Expenditure Routes
+
+
+
+
+// Search Non-Tax Revenue Routes
+
+
+
+
+// Search Scheme Routes
+const getScheme = require("./Routes/getschemeRoutes");
+app.use("/", getScheme);
+
 
 
 // Server Setup

@@ -11,6 +11,7 @@ const getallnontaxRevenue = async (req,res) => {
             res.send("No Records Found");
         }
     } catch (err) {
+        res.status(500).send("Internal Server Error..");
         console.log(err);
     }
 }

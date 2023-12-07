@@ -8,6 +8,7 @@ const getallExpenditure = async (req,res) => {
             res.status(200).json(expenditure.rows);
         }
         else{
+            res.status(500).send("Internal Server Error..");
             res.send("No Records Found");
         }
     } catch (err) {
