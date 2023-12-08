@@ -32,12 +32,14 @@ app.use("/", getallScheme);
 
 
 // Search Expenditure Routes
-
+const getexpenditure = require("./Routes/getexpenditureRoutes");
+app.use("/", getexpenditure);
 
 
 
 // Search Non-Tax Revenue Routes
-
+const getnontaxRevenue = require("./Routes/getnontaxRevenueRoutes");
+app.use("/", getnontaxRevenue);
 
 
 
