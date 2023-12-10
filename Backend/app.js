@@ -3,14 +3,18 @@ const bodyParser = require('body-parser');
 const { urlencoded } = require('body-parser');
 const express = require('express');
 const app = express();
+const cors = require('cors');
 require('dotenv').config();
-const pool = require("../Union-Budget-Explorer/Postgres DB/DB"); // SetUp Postgres Database 
+
+//const pool = require("../Union-Budget-Explorer/Postgres DB/DB"); // SetUp Postgres Database 
 
 
 //Middleware:
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(__dirname + "/Public/"));
+app.use(cors());
+
 
 
 //const homepageRoute = require("./Routes");
