@@ -10,10 +10,9 @@
 
     <section class="content-section">
       <h2>Non Tax Revenue Distribution</h2>
-      <h6>Figures are in ₹ Crores</h6>
 
-      <div class="image-container">
-        <img src="../../../images/Screenshot 2023-11-03 110413.png" alt="Non Tax Revenue Distribution">
+      <div class="graph-container">
+        <canvas ref="barChart"></canvas>
       </div>
 
       <input type="search" class="search" v-model="searchValue" placeholder="Search" @input="searchSector(searchValue)">
@@ -39,12 +38,15 @@
           </tbody>
         </table>
       </div>
+
     </section>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
+import { Chart } from 'chart.js';
+
 
 export default {
   data() {
@@ -55,6 +57,7 @@ export default {
   },
   mounted() {
     this.fetchData();
+    this.fetchGraphData(); // Fetch data for the bar graph
   },
   methods: {
     async fetchData() {
@@ -86,9 +89,50 @@ export default {
           console.log(error);
         });
     },
+    async fetchGraphData() {
+      try {
+        // Fetch data for the bar graph from your router
+        const graphResponse = await axios.get('http://localhost:5000/nontaxrevenue');
+        const graphData = graphResponse.data;
+
+        // Extract sector and amount data
+        const sectorData = graphData.map(item => item.sector_name);
+        const amountData = graphData.map(item => item.amount);
+
+        // Create a bar chart using Chart.js
+        this.createBarChart(sectorData, amountData);
+      } catch (error) {
+        console.error('Error fetching graph data:', error);
+      }
+    },
+
+    createBarChart(sectorData, amountData) {
+      const ctx = this.$refs.barChart.getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: sectorData,
+          datasets: [{
+            label: 'Bar Chart',
+            data: amountData,
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1,
+          }],
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+    },
   },
 };
 </script>
+
 
 <style>
 .main-body {
