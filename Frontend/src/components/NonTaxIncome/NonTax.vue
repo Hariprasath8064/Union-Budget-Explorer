@@ -21,7 +21,7 @@
        </div>
      </div>
 
-     <input type="search" class="search" v-model="searchValue" placeholder="Search" @input="searchSector(searchValue)">
+     <input type="search" class="search" v-model="searchValue" placeholder="Sector" @input="searchSector(searchValue)">
 
      <div class="table-container">
        <table>
@@ -107,7 +107,8 @@ export default {
        const amountData = graphData.map(item => item.amount);
 
        // Create a bar chart using Chart.js for the first graph
-       this.createBarChart(sectorData, amountData, 'barChart1');
+       this.createBarChart(sectorData, amountData, 'barChart1', 'rgba(75, 192, 192, 0.5)', 'rgba(75, 192, 192, 1)', 'Sector-Distribution (in Crs)');
+
      } catch (error) {
        console.error('Error fetching graph data:', error);
      }
@@ -125,35 +126,37 @@ export default {
        const amountData = this.tableData2.map(item => item.amount);
 
        // Create a bar chart using Chart.js for the second graph
-       this.createBarChart(sourceData, amountData, 'barChart2');
+       this.createBarChart(sourceData, amountData, 'barChart2', 'rgba(255, 99, 132, 0.5)', 'rgba(255, 99, 132, 1)', 'Source-Distrivution (in Crs)');
+
      } catch (error) {
        console.error('Error fetching graph data:', error);
      }
    },
 
-   createBarChart(dataLabels, dataValues, chartRef) {
-     const ctx = this.$refs[chartRef].getContext('2d');
-     new Chart(ctx, {
-       type: 'bar',
-       data: {
-         labels: dataLabels,
-         datasets: [{
-           label: 'Bar Chart',
-           data: dataValues,
-           backgroundColor: 'rgba(75, 192, 192, 0.2)',
-           borderColor: 'rgba(75, 192, 192, 1)',
-           borderWidth: 1,
-         }],
-       },
-       options: {
-         scales: {
-           y: {
-             beginAtZero: true,
-           },
-         },
-       },
-     });
-   },
+   createBarChart(dataLabels, dataValues, chartRef, backgroundColor, borderColor, label) {
+    const ctx = this.$refs[chartRef].getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: dataLabels,
+        datasets: [{
+          label: label,
+          data: dataValues,
+          backgroundColor: backgroundColor,
+          borderColor: borderColor,
+          borderWidth: 1,
+        }],
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+      },
+    });
+  },
+
  },
 };
 </script>
