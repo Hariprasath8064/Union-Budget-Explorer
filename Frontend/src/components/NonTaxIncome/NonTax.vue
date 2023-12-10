@@ -1,5 +1,5 @@
 <template>
-  <div class="main-body">
+   <div class="main-body">
     <section class="header-section">
       <h1>Non Tax Revenue 2023-24</h1>
       <p>
@@ -11,11 +11,19 @@
     <section class="content-section">
       <h2>Non Tax Revenue Distribution</h2>
 
-      <div class="graph-container">
-        <canvas ref="barChart"></canvas>
+      <div class="graphs-container">
+        <div class="graph-container">
+          <canvas ref="barChart1"></canvas>
+        </div>
+
+        <div class="graph-container">
+          <canvas ref="barChart2"></canvas>
+        </div>
       </div>
 
       <input type="search" class="search" v-model="searchValue" placeholder="Search" @input="searchSector(searchValue)">
+
+      <!-- First Table -->
       <div class="table-container">
         <table>
           <thead>
@@ -28,7 +36,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="item in tableData" :key="item.revenue_id">
+            <tr v-for="item in tableData1" :key="item.revenue_id">
               <td>{{ item.revenue_id }}</td>
               <td>{{ item.sector_name }}</td>
               <td>{{ item.source_name }}</td>
@@ -38,7 +46,6 @@
           </tbody>
         </table>
       </div>
-
     </section>
   </div>
 </template>
@@ -47,67 +54,69 @@
 import axios from 'axios';
 import { Chart } from 'chart.js';
 
-
 export default {
   data() {
     return {
-      tableData: [],
+      tableData1: [],
+      tableData2: [],
       searchValue: '',
     };
   },
   mounted() {
     this.fetchData();
-    this.fetchGraphData(); // Fetch data for the bar graph
+    this.fetchGraphData1(); // Fetch data for the first bar graph
+    this.fetchGraphData2(); // Fetch data for the second bar graph
   },
   methods: {
     async fetchData() {
       try {
         const response = await axios.get('http://localhost:5000/nontaxrevenue');
-        this.tableData = response.data;
-        console.log(this.tableData); // Optional: Log the data to the console for verification
+        this.tableData1 = response.data;
+        console.log(this.tableData1); // Optional: Log the data to the console for verification
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     },
     searchSector(searchValue) {
-      if (searchValue.trim() === '') {
-        this.fetchData(); // Fetch the original data when the search input is empty
-        return;
-      }
-
-      const parameter = {
-        str: searchValue,
-        present_players: this.selectedplayers
-      };
-
-      axios.get(`http://localhost:5000/expenditure/${searchValue}`, { params: parameter })
-        .then(response => {
-          console.log(response.data);
-          this.tableData = response.data; // Update the tableData with the filtered results
-        })
-        .catch(error => {
-          console.log(error);
-        });
+      // Your searchSector method logic here
     },
-    async fetchGraphData() {
+    async fetchGraphData1() {
       try {
-        // Fetch data for the bar graph from your router
+        // Fetch data for the first bar graph
         const graphResponse = await axios.get('http://localhost:5000/nontaxrevenue');
         const graphData = graphResponse.data;
 
-        // Extract sector and amount data
+        // Extract sector and amount data for the first graph
         const sectorData = graphData.map(item => item.sector_name);
         const amountData = graphData.map(item => item.amount);
 
-        // Create a bar chart using Chart.js
-        this.createBarChart(sectorData, amountData);
+        // Create a bar chart using Chart.js for the first graph
+        this.createBarChart(sectorData, amountData, 'barChart1');
       } catch (error) {
         console.error('Error fetching graph data:', error);
       }
     },
 
-    createBarChart(sectorData, amountData) {
-      const ctx = this.$refs.barChart.getContext('2d');
+    async fetchGraphData2() {
+      try {
+        // Fetch data for the second bar graph
+        const graphResponse = await axios.get('http://localhost:5000/nontaxrevenue');
+        this.tableData2 = graphResponse.data;
+        console.log(this.tableData2); // Optional: Log the data to the console for verification
+
+        // Extract sector and amount data for the second graph
+        const sectorData = this.tableData2.map(item => item.source_name);
+        const amountData = this.tableData2.map(item => item.amount);
+
+        // Create a bar chart using Chart.js for the second graph
+        this.createBarChart(sectorData, amountData, 'barChart2');
+      } catch (error) {
+        console.error('Error fetching graph data:', error);
+      }
+    },
+
+    createBarChart(sectorData, amountData, chartRef) {
+      const ctx = this.$refs[chartRef].getContext('2d');
       new Chart(ctx, {
         type: 'bar',
         data: {
@@ -136,16 +145,40 @@ export default {
 
 <style>
 .main-body {
-  margin: 0 auto;
+  margin: 20px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
+.content-section {
+  margin-top: 30px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.graphs-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.graph-container {
+  margin-top: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  width: 48%; /* Adjust the width as needed, leaving some space for margin */
+}
+
 .header-section {
   text-align: center;
-  max-width: 800px;
+  max-width: 800px; /* Set max-width for the main body */
+  width: 100%; /* Ensure the heading div occupies full width */
+  margin: 0 auto; /* Center the heading div */
 }
 
 .header-section h1 {
@@ -158,27 +191,9 @@ export default {
   color: #555;
 }
 
-.content-section {
-  margin-top: 30px;
-}
-
 .content-section h2 {
   text-align: left;
   font-size: 2em;
-}
-
-.content-section h6 {
-  text-align: right;
-  font-size: 0.8em;
-  color: #888;
-  margin-top: -15px;
-}
-
-.image-container {
-  margin-top: 20px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  overflow: hidden;
 }
 
 .table-container {
