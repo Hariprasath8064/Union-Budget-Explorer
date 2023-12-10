@@ -6,7 +6,6 @@
       <router-link to="" class="right">Schemes</router-link>
       <router-link to="/About" class="right">Team</router-link>
     </div>
-    <RouterView></RouterView>
   </template>
   
   <style scoped>

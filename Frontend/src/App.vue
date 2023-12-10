@@ -1,15 +1,15 @@
 <template>
   <div id="app">
-    <Navbar />
+    <Layout />
   </div>
 </template>
 
 <script>
-import Navbar from '@/components/Global/Navbar.vue';
+import Layout from '@/components/Global/Layout.vue';
 
 export default {
   components: {
-    Navbar,
+    Layout,
   },
 };
 </script>

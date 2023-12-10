@@ -43,7 +43,6 @@
   
       <DynamicTyping />
       <ExploreSection />
-      <Footer />
     </div>
   </template>
   
@@ -52,14 +51,12 @@
   import Navbar from '@/components/Global/Navbar.vue'
   import DynamicTyping from '@/components/Index/DynamicTyping.vue'
   import ExploreSection from '@/components/Index/ExploreSection.vue'
-  import Footer from '@/components/Global/Footer.vue'
   
   export default {
     components: {
       Navbar,
       DynamicTyping,
       ExploreSection,
-      Footer,
     },
     data() {
       return {

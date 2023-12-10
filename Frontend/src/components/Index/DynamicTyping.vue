@@ -51,27 +51,27 @@
   </script>
   
   <style scoped>
-  .dynamic-typing-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-    background-color: #1c2127;
-  }
-  
-  .dynamic-typing-container p {
-    font-size: 24px;
-    margin-right: 10px;
-    color: white;
-  }
-  
-  .dynamic-typing {
-    font-size: 24px;
-    font-weight: bold;
-    white-space: nowrap;
-    overflow: hidden;
-    border-right: 2px solid #000;
-    color: white;
-  }
-  </style>
-  
+.dynamic-typing-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  background-color: #1c2127;
+  width: 100%; /* Set width to 100% to extend the whole width */
+}
+
+.dynamic-typing-container p {
+  font-size: 24px;
+  margin-right: 10px;
+  color: white;
+}
+
+.dynamic-typing {
+  font-size: 24px;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid #000;
+  color: white;
+}
+</style>
