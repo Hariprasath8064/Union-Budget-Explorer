@@ -11,7 +11,8 @@
   "dependencies": {
     "chart.js": "^4.4.1",
     "chartjs-plugin-datalabels": "^2.2.0",
-    "vue": "^3.3.10"
+    "vue": "^3.3.10",
+    "vue-router": "^4.2.5"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.5.1",

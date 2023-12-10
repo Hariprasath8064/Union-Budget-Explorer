@@ -49,10 +49,10 @@
   
   <script>
   import Chart from 'chart.js/auto';
-  import Navbar from '@/components/Navbar.vue'
+  import Navbar from '@/components/Global/Navbar.vue'
   import DynamicTyping from '@/components/Index/DynamicTyping.vue'
   import ExploreSection from '@/components/Index/ExploreSection.vue'
-  import Footer from '@/components/Footer.vue'
+  import Footer from '@/components/Global/Footer.vue'
   
   export default {
     components: {

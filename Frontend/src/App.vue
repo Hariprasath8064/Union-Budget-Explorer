@@ -1,18 +1,15 @@
 <template>
   <div id="app">
     <Navbar />
-    <MainBody />
   </div>
 </template>
 
 <script>
-import Navbar from './components/Navbar.vue';
-import MainBody from './components/Index/MainBody.vue';
+import Navbar from '@/components/Global/Navbar.vue';
 
 export default {
   components: {
     Navbar,
-    MainBody,
   },
 };
 </script>

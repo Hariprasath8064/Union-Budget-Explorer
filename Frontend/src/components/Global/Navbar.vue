@@ -1,11 +1,12 @@
 <template>
     <div class="navbar">
-      <a href="/Public/index.html" class="icon">Union Budget Explorer</a>
-      <a href="/Public/index.html" class="right">Budget at a Glance</a>
-      <a href="/Public/nontax.html" class="right">Non-tax Income</a>
-      <a href="#schemes" class="right">Schemes</a>
-      <a href="/Public/about.html" class="right">Team</a>
+      <router-link to="/" class="icon">Union Budget Explorer</router-link>
+      <router-link to="/Expenditure" class="right">Expenditure</router-link>
+      <router-link to="/NonTax" class="right">Non-tax Income</router-link>
+      <router-link to="" class="right">Schemes</router-link>
+      <router-link to="/About" class="right">Team</router-link>
     </div>
+    <RouterView></RouterView>
   </template>
   
   <style scoped>
