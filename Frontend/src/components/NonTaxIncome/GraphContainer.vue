@@ -10,7 +10,6 @@
   </div>
 </template>
 
-
 <script>
 import { createPieChart, createBarChart } from '@/components/Global/ChartUtils';
 import axios from 'axios';
@@ -42,7 +41,6 @@ export default {
           sourceAmountDataPie,
           this.$refs.pieChart,
           ['#F2AB6D', '#9F8F68', '#AAC8E5', '#D77C75', '#A4BD98', '#D9C7A4', '#8E8B8B', '#B7B591'],
-          'Source-Distribution (in Crs)',
           50
         );
 
@@ -93,11 +91,13 @@ export default {
   border-radius: 8px;
   overflow: hidden;
   width: 48%;
-  position: relative; /* Add this line to ensure proper positioning of the canvas */
+  position: relative;
+  display: flex;
+  justify-content: center; /* Center the content horizontally */
+  align-items: center; /* Center the content vertically */
 }
 
 #pieChart {
-  width: 50%; /* Make sure the canvas takes the full width of the container */
-  height: auto; /* Allow the canvas to adjust its height */
-}
+  width: 60%; /* Adjusted width for better visibility */
+  height: auto;}
 </style>

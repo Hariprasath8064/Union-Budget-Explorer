@@ -30,7 +30,7 @@ export function createBarChart(dataLabels, dataValues, chartRef, backgroundColor
 }
 
 // Function to create a pie chart
-export function createPieChart(dataLabels, dataValues, chartRef, backgroundColor, label, cutout) {
+export function createPieChart(dataLabels, dataValues, chartRef, backgroundColor, cutout) {
   const ctx = chartRef.getContext('2d');
   return new Chart(ctx, {
     type: 'pie',

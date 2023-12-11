@@ -117,7 +117,6 @@ export default {
         this.pieChart1Data,
         pieChartElement1,
         this.pieChart1Colors,
-        'Income 23-24',
         this.cutout
       );
 
@@ -127,7 +126,6 @@ export default {
         this.pieChart2Data,
         pieChartElement2,
         this.pieChart2Colors,
-        'Expense 23-24',
         this.cutout
       );
     },
