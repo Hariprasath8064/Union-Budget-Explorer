@@ -1,0 +1,164 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    overflow: hidden;
+    z-index: 2;
+    background-color: #1c2127;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 17px 23px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    text-decoration: none;
+    transition: background-color 0.125s;
+    border-radius: 10px;
+}
+
+.navbar a:not(#icon):hover {
+    background-color: #f8d075;
+    color: black;
+    border-radius: 10px;
+}
+
+#icon {
+    font-size: 18px;
+    font-weight: 600;
+    padding-right: 40%;
+}
+
+.main-body {
+    text-align: center;
+    color: #515b5e;
+    padding: 50px;
+}
+
+#profile {
+    color: #515b5e;
+    margin-top: -10px;
+}
+
+.columns {
+    display: flex;
+}
+
+.column-1 {
+    flex: 25%;
+    padding: 0 20px;
+}
+
+.column-right {
+    flex: 75%;
+    padding: 0 20px;
+}
+
+.column-1 h3 {
+    font-size: 18px;
+    margin-bottom: 0px;
+    padding: 0px;
+    color: #515b5e;
+}
+
+.percentage {
+    font-size: 16px;
+    color: green;
+    margin: 0px;
+    margin-top: 5px;
+}
+
+.column-right img {
+    width: 90%;
+    height: auto;
+}
+
+.small-text {
+    font-size: 10px;
+}
+
+.explore {
+    text-align: center;
+    margin-top: 50px;
+    background-color: #e3e4df;
+    padding: 50px;
+}
+
+.explore h2 {
+    font-size: 30px;
+    color: #000;
+}
+
+.explore p {
+    color: #000;
+    padding-left: 130px;
+    padding-right: 130px;
+}
+
+.cards-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.card {
+    flex: 0 0 25%;
+    text-align: center;
+    cursor: pointer;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+}
+
+.card .name {
+    background-color: #c3d9f0;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.card:hover .name {
+    background-color: #ffffff;
+}
+
+.footer {
+    background-color: #1c2127;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 20px;
+    bottom: 0;
+    width: 100%;
+}
+
+.dynamic-typing-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    background-color: #1c2127;
+}
+
+.dynamic-typing-container p {
+    font-size: 24px;
+    margin-right: 10px;
+    color: white;
+}
+
+.dynamic-typing {
+    font-size: 24px;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid #000;
+    color: white;
+}

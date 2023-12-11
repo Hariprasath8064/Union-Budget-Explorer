@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
+    <title>Union Budget Explorer</title>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/Public/index.html" id="icon">Union Budget Explorer</a>
+        <a href="/Public/index.html">Budget at a Glance</a>
+        <a href="/Public/nontax.html">Non tax Income</a>
+        <a href="#schemes">Schemes</a>
+        <a href="/Public/about.html">Team</a>
+    </div>
+
+    <div class="main-body">
+        <h1 id="profile">Budget Profile</h1>
+
+        <div class="columns">
+            <div class="column-1">
+                <h3>Total Budgetary Expenditure</h3>
+                <h6 class="percentage">₹ 4503097 Cr. 14.15%</h6>
+                <p>
+                    This section presents the comprehensive money flow data of the Union Budget 2023-24. It presents both the sources of revenue of the Union Government and the expenditure commitments it has made on different heads.
+                </p>
+                <p class="small-text">
+                    Note: Percentage changes for 2023-24 Budget Estimates have been calculated with respect to 2022-23 Budget Estimate figures. Total Union Budget Expenditure figure includes GST compensation cess. The figure for Total Receipts Budget is taken net of fund transferred to the National Calamity Contingency Fund and States Share.
+                </p>
+                <h3>Total Receipts Budget</h3>
+                <h6 class="percentage">₹ 4503097 Cr. 14.15%</h6>
+            </div>
+
+            <div class="column-right">
+                <img src="images\Screenshot 2023-11-02 224543.png">
+            </div>
+        </div>
+
+        <div class="dynamic-typing-container">
+            <p style="font-size: 24px; display: inline;">Explore Union Budget</p>
+            <div class="dynamic-typing" id="dynamicText"></div>
+        </div>
+
+        <div class="explore">
+            <h2>Explore Sections</h2>
+            <p>
+                Explore Union Budget 2023-24: Expenditure Budget, Receipts Budget and Allocations for Major Schemes with data and interactive visualizations in the sections below.
+            </p>
+    
+            <div class="cards-container">
+                <div class="card" onclick="location.href='your-first-link';">
+                    <img src="images/Screenshot 2023-11-02 235623.png">
+                    <div class="name">Non Tax Income</div>
+                </div>
+    
+                <div class="card" onclick="location.href='your-second-link';">
+                    <img src="images/Screenshot 2023-11-02 235631.png">
+                    <div class="name">Budget Trends</div>
+                </div>
+    
+                <div class="card" onclick="location.href='your-third-link';">
+                    <img src="images/Screenshot 2023-11-02 235638.png">
+                    <div class="name">Schemes</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2023 Union Budget Explorer. All Rights Reserved.
+    </div>
+    
+    <script>
+        const phrases = ["Data", "Visualizations", "Insights!"];
+        let index = 0;
+        let charIndex = 0;
+        const typingSpeed = 100; // Adjust typing speed (in milliseconds) as needed
+
+        function typeDynamicText() {
+            const currentPhrase = phrases[index];
+            const dynamicTextElement = document.getElementById("dynamicText");
+
+            if (charIndex < currentPhrase.length) {
+                dynamicTextElement.textContent += currentPhrase.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeDynamicText, typingSpeed);
+            } else {
+                setTimeout(() => {
+                    removeDynamicText();
+                }, 1000);
+            }
+        }
+
+        function removeDynamicText() {
+            const dynamicTextElement = document.getElementById("dynamicText");
+
+            if (charIndex >= 0) {
+                dynamicTextElement.textContent = phrases[index].substring(0, charIndex);
+                charIndex--;
+                setTimeout(removeDynamicText, typingSpeed / 2); // Adjust typing speed (in milliseconds) as needed
+            } else {
+                index = (index + 1) % phrases.length;
+
+                setTimeout(typeDynamicText, typingSpeed);
+            }
+        }
+
+        typeDynamicText();
+    </script>
+</body>
+</html>

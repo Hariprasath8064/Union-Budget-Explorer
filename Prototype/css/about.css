@@ -1,0 +1,31 @@
+.about {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.team-member {
+    display: inline-block;
+    margin: 50px;
+    text-align: center;
+}
+
+.team-member img {
+    width: 250px; /* Adjust the width as needed */
+    height: 250px; /* Adjust the height as needed */
+    border-radius: 50%;
+}
+
+.member-info {
+    margin-top: 10px;
+}
+
+.member-info a {
+    color: #f8d075;
+    text-decoration: none;
+    margin: 0 5px;
+    font-size: 18px;
+}
+
+.member-info a:hover {
+    color: #f4bd3d;
+}
