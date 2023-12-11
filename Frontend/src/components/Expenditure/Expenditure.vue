@@ -1,10 +1,30 @@
 <template>
-    <h1>Expenditure</h1>
-  </template>
-  
-  <script>
-  export default {
-    // Your component options go here
-  }
-  </script>
-  
+  <div class="nontax-page">
+    <HeaderSection />
+    <ContentSection/>
+  </div>
+</template>
+
+<script>
+import HeaderSection from '@/components/Expenditure/HeaderSection.vue';
+import ContentSection from '@/components/Expenditure/ContentSection.vue';
+
+
+export default {
+  components: {
+    HeaderSection,
+    ContentSection,
+  },
+  data() {
+    return {
+      
+    };
+  },
+  mounted() {
+    
+  },
+  methods: {
+    
+  },
+};
+</script>

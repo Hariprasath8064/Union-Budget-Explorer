@@ -10,7 +10,6 @@
   
   <script>
   export default {
-    // No need for data or methods in this component
   };
   </script>
   
