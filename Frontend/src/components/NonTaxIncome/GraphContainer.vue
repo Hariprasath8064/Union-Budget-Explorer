@@ -11,9 +11,8 @@
 </template>
 
 <script>
-import { createBarChart } from './ChartUtils.js';
+import { createBarChart } from '@/components/Global/ChartUtils';
 import axios from 'axios';
-
 export default {
   data() {
     return {
@@ -21,26 +20,26 @@ export default {
       chart2: null,
     };
   },
-  mounted() {
-    this.fetchGraphData();
-  },
+  async mounted() {
+  await this.$nextTick(); // Wait for the DOM to be updated
+
+  await this.fetchGraphData();
+},
+
   methods: {
     async fetchGraphData() {
       try {
         const graphResponse = await axios.get('http://localhost:5000/nontaxrevenue');
         const graphData = graphResponse.data;
-
         // Extract sector and amount data for the first graph
         const sectorData = graphData.map(item => item.sector_name);
         const amountData = graphData.map(item => item.amount);
-
         // Create a bar chart using Chart.js for the first graph
         this.chart1 = createBarChart(sectorData, amountData, this.$refs.barChart1, 'rgba(75, 192, 192, 0.5)', 'rgba(75, 192, 192, 1)', 'Sector-Distribution (in Crs)');
-
+        this.$forceUpdate();
         // Extract source and amount data for the second graph
         const sourceData = graphData.map(item => item.source_name);
         const sourceAmountData = graphData.map(item => item.amount);
-
         // Create a bar chart using Chart.js for the second graph
         this.chart2 = createBarChart(sourceData, sourceAmountData, this.$refs.barChart2, 'rgba(255, 99, 132, 0.5)', 'rgba(255, 99, 132, 1)', 'Source-Distribution (in Crs)');
       } catch (error) {
@@ -57,7 +56,6 @@ export default {
   justify-content: space-between;
   width: 100%;
 }
-
 .graph-container {
   margin-top: 20px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);

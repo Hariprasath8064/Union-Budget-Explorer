@@ -20,6 +20,10 @@ export function createBarChart(dataLabels, dataValues, chartRef, backgroundColor
           beginAtZero: true,
         },
       },
+      animation: {
+        duration: 1000, // Adjust the duration as needed
+        easing: 'easeInOutQuad', // Experiment with different easing functions
+      },
     },
   });
 }
