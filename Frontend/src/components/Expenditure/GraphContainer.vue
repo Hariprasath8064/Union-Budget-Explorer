@@ -6,7 +6,7 @@
 
     <div class="graph-container" id="pie">
       <p class="chart-title">Source Distribution (in Crs)</p>
-      <canvas ref="pieChart"></canvas>
+      <canvas ref="pieChart" id="pieChart"></canvas>
     </div>
   </div>
 </template>
@@ -52,7 +52,7 @@ export default {
           sourceAmountDataPie,
           this.$refs.pieChart,
           ['#F2AB6D', '#9F8F68', '#AAC8E5', '#D77C75', '#A4BD98', '#D9C7A4', '#8E8B8B', '#B7B591'], // Different colors for better visibility
-          40
+          60
         );
       } catch (error) {
         console.error('Error fetching graph data:', error);
@@ -83,7 +83,7 @@ export default {
 }
 
 #pieChart {
-  width: 100%;
+  width: 60%;
   height: auto;
 }
 

@@ -98,6 +98,6 @@ export default {
 }
 
 #pieChart {
-  width: 60%; /* Adjusted width for better visibility */
+  width: 60%;
   height: auto;}
 </style>
