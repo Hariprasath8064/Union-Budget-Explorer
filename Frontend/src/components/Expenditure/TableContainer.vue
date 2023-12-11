@@ -6,17 +6,17 @@
             <th>Revenue ID</th>
             <th>Sector Name</th>
             <th>Source Name</th>
-            <th>Amount (₹)</th>
+            <th>Amount (₹ in Crs)</th>
             <th>Collection Date</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="item in tableData" :key="item.revenue_id">
-            <td>{{ item.revenue_id }}</td>
+            <td>{{ item.expense_id }}</td>
             <td>{{ item.sector_name }}</td>
-            <td>{{ item.source_name }}</td>
+            <td>{{ item.category_name }}</td>
             <td>{{ item.amount }}</td>
-            <td>{{ item.collection_date }}</td>
+            <td>{{ formatDate(item.expense_date) }}</td>
           </tr>
         </tbody>
       </table>
@@ -28,6 +28,12 @@
     props: {
       tableData: Array,
     },
+    methods: {
+        formatDate: function (dateString) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString(undefined, options);
+        },
+    }
   };
   </script>
   

@@ -16,7 +16,7 @@
             <td>{{ item.sector_name }}</td>
             <td>{{ item.source_name }}</td>
             <td>{{ item.amount }}</td>
-            <td>{{ item.collection_date }}</td>
+            <td>{{ formatDate(item.collection_date) }}</td>
           </tr>
         </tbody>
       </table>
@@ -28,6 +28,12 @@
     props: {
       tableData: Array,
     },
+    methods: {
+      formatDate: function (dateString) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString(undefined, options);
+        },
+    }
   };
   </script>
   

@@ -47,130 +47,97 @@
   </template>
   
   <script>
-  import Chart from 'chart.js/auto';
-  import Navbar from '@/components/Global/Navbar.vue'
-  import DynamicTyping from '@/components/Index/DynamicTyping.vue'
-  import ExploreSection from '@/components/Index/ExploreSection.vue'
-  
-  export default {
-    components: {
-      Navbar,
-      DynamicTyping,
-      ExploreSection,
+import Chart from 'chart.js/auto';
+import Navbar from '@/components/Global/Navbar.vue';
+import DynamicTyping from '@/components/Index/DynamicTyping.vue';
+import ExploreSection from '@/components/Index/ExploreSection.vue';
+import { createPieChart } from '@/components/Global/ChartUtils'; 
+
+export default {
+  components: {
+    Navbar,
+    DynamicTyping,
+    ExploreSection,
+  },
+  data() {
+    return {
+      pieChart1Data: [34, 15, 15, 4, 7, 17, 6, 2],
+      pieChart2Data: [17, 20, 8, 7, 9, 18, 4, 8, 9],
+      // Labels and background colors for Pie Chart 1
+      pieChart1Labels: [
+        'Borrowing and Liabilities',
+        'Corporation tax',
+        'Income tax',
+        'Customs',
+        'Union Excise Duties',
+        'GST and other taxes',
+        'Non-tax receipts',
+        'Capital receipts',
+      ],
+      pieChart1Colors: [
+        '#D9BF77',
+        '#C68642',
+        '#92A8D1',
+        '#B04B45',
+        '#789B73',
+        '#BAA892',
+        '#7C6A6A',
+        '#9D9B7F',
+      ],
+      // Labels and background colors for Pie Chart 2
+      pieChart2Labels: [
+        'Center Sector Scheme',
+        'Interest Payments',
+        'Defense',
+        'Subsidies',
+        'Finance commission & transfers',
+        'States share of Taxes',
+        'Pensions',
+        'Other Expenditure',
+        'Centrally sponsored Schemes',
+      ],
+      pieChart2Colors: [
+        '#F2AB6D',
+        '#9F8F68',
+        '#AAC8E5',
+        '#D77C75',
+        '#A4BD98',
+        '#D9C7A4',
+        '#8E8B8B',
+        '#B7B591',
+      ],
+      cutout: 50,
+    };
+  },
+  methods: {
+    createPieChart() {
+      const pieChartElement1 = this.$refs.pieChart1;
+      createPieChart(
+        this.pieChart1Labels,
+        this.pieChart1Data,
+        pieChartElement1,
+        this.pieChart1Colors,
+        'Income 23-24',
+        this.cutout
+      );
+
+      const pieChartElement2 = this.$refs.pieChart2;
+      createPieChart(
+        this.pieChart2Labels,
+        this.pieChart2Data,
+        pieChartElement2,
+        this.pieChart2Colors,
+        'Expense 23-24',
+        this.cutout
+      );
     },
-    data() {
-      return {
-        pieChart1Data: [34, 15, 15, 4, 7, 17, 6, 2],
-        pieChart2Data: [17, 20, 8, 7, 9, 18, 4, 8, 9],
-      };
-    },
-    methods: {
-      createPieChart() {
-        // Create the first pie chart
-        const pieChartElement1 = this.$refs.pieChart1;
-        new Chart(pieChartElement1, {
-          type: 'pie',
-          data: {
-            labels: [
-              'Borrowing and Liabilities',
-              'Corporation tax',
-              'Income tax',
-              'Customs',
-              'Union Excise Duties',
-              'GST and other taxes',
-              'Non-tax receipts',
-              'Capital receipts',
-            ],
-            datasets: [
-              {
-                data: this.pieChart1Data,
-                backgroundColor: [
-                  '#D9BF77',
-                  '#C68642',
-                  '#92A8D1',
-                  '#B04B45',
-                  '#789B73',
-                  '#BAA892',
-                  '#7C6A6A',
-                  '#9D9B7F',
-                ],
-              },
-            ],
-          },
-          options: {
-            cutout: 50,
-            plugins: {
-              legend: {
-                position: 'right',
-              },
-            },
-            scales: {
-              x: {
-                ticks: {
-                  rotation: -45,
-                },
-              },
-            },
-            responsive: false,
-          },
-        });
-  
-        // Create the second pie chart
-        const pieChartElement2 = this.$refs.pieChart2;
-        new Chart(pieChartElement2, {
-          type: 'pie',
-          data: {
-            labels: [
-              'Center Sector Scheme',
-              'Interest Payments',
-              'Defense',
-              'Subsidies',
-              'Finance commission & transfers',
-              'States share of Taxes',
-              'Pensions',
-              'Other Expenditure',
-              'Centrally sponsored Schemes',
-            ],
-            datasets: [
-              {
-                data: this.pieChart2Data,
-                backgroundColor: [
-                '#F2AB6D', // Soft Orange
-                '#9F8F68', // Earthy Taupe
-                '#AAC8E5', // Soft Periwinkle
-                '#D77C75', // Earthy Salmon
-                '#A4BD98', // Soft Sage
-                '#D9C7A4', // Earthy Tan
-                '#8E8B8B', // Earthy Gray
-                '#B7B591', // Soft Khaki
-                ],
-              },
-            ],
-          },
-          options: {
-            cutout: 50,
-            plugins: {
-              legend: {
-                position: 'right',
-              },
-            },
-            scales: {
-              x: {
-                ticks: {
-                  rotation: -45,
-                },
-              },
-            },
-            responsive: false,
-          },
-        });
-      },
-    },
-    mounted() {
-      this.createPieChart();
-    },
-  };
-  </script>
+  },
+  mounted() {
+    this.createPieChart();
+  },
+};
+</script>
+
   
   <style scoped>
   .columns {

@@ -1,7 +1,8 @@
+<!-- Your main component -->
 <template>
     <section class="content-section">
       <GraphContainer />
-      <input type="search" class="search" v-model="searchValue" placeholder="Sector" @input="searchSector">
+      <SearchBar @search="handleSearch" />
       <TableContainer :tableData="tableData1" />
     </section>
   </template>
@@ -9,18 +10,19 @@
   <script>
   import GraphContainer from '@/components/Expenditure/GraphContainer.vue';
   import TableContainer from '@/components/Expenditure/TableContainer.vue';
+  import SearchBar from '@/components/Expenditure/SearchBar.vue'; // Import the new SearchBar component
   import axios from 'axios';
   
   export default {
     components: {
       GraphContainer,
       TableContainer,
+      SearchBar, // Register the SearchBar component
     },
     data() {
       return {
         tableData1: [],
         originalData: [],
-        searchValue: '',
       };
     },
     mounted() {
@@ -30,7 +32,7 @@
     methods: {
       async fetchData() {
         try {
-          const response = await axios.get('http://localhost:5000/nontaxrevenue');
+          const response = await axios.get('http://localhost:5000/expenditure');
           this.tableData1 = response.data;
           this.originalData = response.data; // Save the original data
           console.log(this.tableData1);
@@ -38,25 +40,9 @@
           console.error('Error fetching data:', error);
         }
       },
-      searchSector() {
-        if (this.searchValue.trim() === '') {
-          this.fetchData(); // Fetch the original data when the search input is empty
-          return;
-        }
-  
-        const parameter = {
-          str: this.searchValue,
-          present_players: this.selectedplayers, // Make sure to define selectedplayers or remove it if not used
-        };
-  
-        axios.get(`http://localhost:5000/nontaxrevenue/${this.searchValue}`, { params: parameter })
-          .then(response => {
-            console.log(response.data);
-            this.tableData1 = response.data; // Update the tableData1 with the filtered results
-          })
-          .catch(error => {
-            console.log(error);
-          });
+      handleSearch(data) {
+        // Check if the received data is an empty string, fetch the original data if it is
+        this.tableData1 = data === '' ? this.originalData : data;
       },
     },
   };
@@ -69,10 +55,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  
-  .search {
-    margin-top: 10px;
   }
   </style>
   

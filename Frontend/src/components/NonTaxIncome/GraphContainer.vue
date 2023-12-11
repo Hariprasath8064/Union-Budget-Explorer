@@ -1,7 +1,7 @@
 <template>
   <div class="graphs-container">
     <div class="graph-container">
-      <canvas ref="barChart1"></canvas>
+      <canvas ref="pieChart" id="pieChart"></canvas>
     </div>
 
     <div class="graph-container">
@@ -10,38 +10,68 @@
   </div>
 </template>
 
+
 <script>
-import { createBarChart } from '@/components/Global/ChartUtils';
+import { createPieChart, createBarChart } from '@/components/Global/ChartUtils';
 import axios from 'axios';
+
 export default {
   data() {
     return {
-      chart1: null,
+      pieChart: null,
       chart2: null,
     };
   },
   async mounted() {
-  await this.$nextTick(); // Wait for the DOM to be updated
-
-  await this.fetchGraphData();
-},
+    await this.fetchGraphData();
+  },
 
   methods: {
     async fetchGraphData() {
       try {
         const graphResponse = await axios.get('http://localhost:5000/nontaxrevenue');
         const graphData = graphResponse.data;
-        // Extract sector and amount data for the first graph
-        const sectorData = graphData.map(item => item.sector_name);
-        const amountData = graphData.map(item => item.amount);
-        // Create a bar chart using Chart.js for the first graph
-        this.chart1 = createBarChart(sectorData, amountData, this.$refs.barChart1, 'rgba(75, 192, 192, 0.5)', 'rgba(75, 192, 192, 1)', 'Sector-Distribution (in Crs)');
-        this.$forceUpdate();
+
+        // Extract source and amount data for the pie chart
+        const sourceDataPie = graphData.map(item => item.source_name);
+        const sourceAmountDataPie = graphData.map(item => item.amount);
+
+        // Create a pie chart using Chart.js
+        this.pieChart = createPieChart(
+          sourceDataPie,
+          sourceAmountDataPie,
+          this.$refs.pieChart,
+          ['#F2AB6D', '#9F8F68', '#AAC8E5', '#D77C75', '#A4BD98', '#D9C7A4', '#8E8B8B', '#B7B591'],
+          'Source-Distribution (in Crs)',
+          50
+        );
+
+        // Group data by source_name and sum the amounts
+        const groupedSourceData = graphData.reduce((result, item) => {
+          const sourceName = item.source_name;
+
+          if (!result[sourceName]) {
+            result[sourceName] = 0;
+          }
+
+          result[sourceName] += item.amount;
+
+          return result;
+        }, {});
+
         // Extract source and amount data for the second graph
-        const sourceData = graphData.map(item => item.source_name);
-        const sourceAmountData = graphData.map(item => item.amount);
+        const sourceData = Object.keys(groupedSourceData);
+        const sourceAmountData = Object.values(groupedSourceData);
+
         // Create a bar chart using Chart.js for the second graph
-        this.chart2 = createBarChart(sourceData, sourceAmountData, this.$refs.barChart2, 'rgba(255, 99, 132, 0.5)', 'rgba(255, 99, 132, 1)', 'Source-Distribution (in Crs)');
+        this.chart2 = createBarChart(
+          sourceData,
+          sourceAmountData,
+          this.$refs.barChart2,
+          'rgba(255, 99, 132, 0.5)',
+          'rgba(255, 99, 132, 1)',
+          'Source-Distribution (in Crs)'
+        );
       } catch (error) {
         console.error('Error fetching graph data:', error);
       }
@@ -56,11 +86,18 @@ export default {
   justify-content: space-between;
   width: 100%;
 }
+
 .graph-container {
   margin-top: 20px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   overflow: hidden;
   width: 48%;
+  position: relative; /* Add this line to ensure proper positioning of the canvas */
+}
+
+#pieChart {
+  width: 50%; /* Make sure the canvas takes the full width of the container */
+  height: auto; /* Allow the canvas to adjust its height */
 }
 </style>
