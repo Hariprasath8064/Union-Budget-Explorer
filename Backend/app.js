@@ -52,6 +52,10 @@ const getScheme = require("./Routes/getschemeRoutes");
 app.use("/", getScheme);
 
 
+const getobjective = require("./Routes/getschemeinfoRoute");
+app.use("/", getobjective);
+
+
 
 // Server Setup
 const port = process.env.PORT || 5000;

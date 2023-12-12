@@ -1,10 +1,12 @@
 <template>
     <div class="navbar">
       <router-link to="/" class="icon">Union Budget Explorer</router-link>
+      <router-link to="/About" class="right">Team</router-link>
+      <router-link to="/Schemes" class="right">Schemes</router-link>
       <router-link to="/Expenditure" class="right">Expenditure</router-link>
       <router-link to="/NonTax" class="right">Non-tax Income</router-link>
-      <router-link to="" class="right">Schemes</router-link>
-      <router-link to="/About" class="right">Team</router-link>
+      
+      
     </div>
   </template>
   

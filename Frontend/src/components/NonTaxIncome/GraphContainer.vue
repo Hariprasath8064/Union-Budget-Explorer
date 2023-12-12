@@ -63,13 +63,13 @@ export default {
 
         // Create a bar chart using Chart.js for the second graph
         this.chart2 = createBarChart(
-          sourceData,
-          sourceAmountData,
-          this.$refs.barChart2,
-          'rgba(255, 99, 132, 0.5)',
-          'rgba(255, 99, 132, 1)',
-          'Source-Distribution (in Crs)'
-        );
+        sourceData,
+        sourceAmountData,
+        this.$refs.barChart2,
+        'rgba(46, 139, 87, 0.5)',
+        'rgba(46, 139, 87, 1)',
+        'Source-Distribution (in Crs)'
+      );
       } catch (error) {
         console.error('Error fetching graph data:', error);
       }
@@ -98,6 +98,6 @@ export default {
 }
 
 #pieChart {
-  width: 60%; /* Adjusted width for better visibility */
+  width: 60%;
   height: auto;}
 </style>
