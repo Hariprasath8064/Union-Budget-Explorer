@@ -67,3 +67,27 @@ export function createPieChart(dataLabels, dataValues, chartRef, backgroundColor
     },
   });
 }
+
+// Function to create a radar chart
+export function createRadarChart(labels, dataValues, chartRef, backgroundColor, borderColor, label, fontSize) {
+  const ctx = chartRef.getContext('2d');
+  return new Chart(ctx, {
+    type: 'radar',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: label,
+        data: dataValues,
+        backgroundColor: backgroundColor,
+        borderColor: borderColor,
+        borderWidth: 1,
+      }],
+    },
+    options: {
+      animation: {
+        duration: 1000,
+        easing: 'easeInOutQuad',
+      },
+    },
+  });
+}
