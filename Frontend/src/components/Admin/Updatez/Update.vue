@@ -5,6 +5,9 @@
       <Expense style="margin-bottom: 10px;" />
       <Revenue />
     </div>
+    <div class="panel-body">
+      <Delete />
+    </div>
   </div>
 </template>
 
@@ -12,12 +15,14 @@
 import Scheme from '@/components/Admin/Updatez/Scheme.vue';
 import Expense from '@/components/Admin/Updatez/Expense.vue';
 import Revenue from '@/components/Admin/Updatez/Revenue.vue';
+import Delete from '@/components/Admin/Delete/Delete.vue'
 
 export default {
   components: {
     Scheme,
     Expense,
-    Revenue
+    Revenue,
+    Delete
   },
 };
 </script>
@@ -28,7 +33,7 @@ export default {
   flex-direction: row; 
   justify-content: space-between;
   align-items: stretch; 
-  max-width: 750px;
+  max-width: 1100px;
   margin: 20px;
 }
 .panel-body {
