@@ -1,4 +1,4 @@
-const pool = require("../Postgres DB/DB").pool;
+const pool = require("../../Postgres DB/DB").pool;
 
 
 const getallnontaxRevenue = async (req,res) => {
