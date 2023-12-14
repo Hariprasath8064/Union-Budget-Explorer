@@ -7,7 +7,7 @@
       <form @submit.prevent="submitForm">
         <div class="form-group">
           <label for="RevenueID">Revenue ID:</label>
-          <input type="text" id="RevenueID" v-model="formData.RevenueID" required />
+          <input type="text" id="RevenueID" v-model="formData.Revenue_id" required />
         </div>
           
         <div class="column-group">
@@ -18,7 +18,7 @@
 
           <div class="form-group">
             <label for="date">Date:</label>
-            <input type="date" id="date" v-model="formData.Date" required />
+            <input type="date" id="date" v-model="formData.Collection_date" required />
           </div>
         </div>
   
@@ -31,20 +31,31 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   data() {
     return {
       formData: {
-        RevenueID: '',
+        Revenue_id: '',
         Amount: '',
-        Date: '',
+        Collection_date: '', // Corrected spelling here
       },
     };
   },
   methods: {
-    submitForm() {
-      // Handle form submission logic here
+    async submitForm() {
+      this.formData.Revenue_id = parseInt(this.formData.Revenue_id, 10);
+      this.formData.Amount = parseFloat(this.formData.Amount);
       console.log('Form submitted with data:', this.formData);
+      try {
+        const response = await axios.post('http://localhost:5000/admin/updaterevenue', this.formData);
+
+        console.log('API response:', response.status, response.statusText, response.data);
+
+      } catch (error) {
+        console.error('Error submitting form:', error);
+      }
     },
   },
 };
