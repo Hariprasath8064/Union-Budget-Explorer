@@ -10,7 +10,7 @@
           <input type="text" id="SchemeID" v-model="formData.Scheme_id" required />
         </div>
         <div class="form-group">
-          <button type="submit">Update</button>
+          <button type="submit">Delete</button>
         </div>
       </form>
     </div>
@@ -32,7 +32,7 @@ export default {
       this.formData.Scheme_id = parseInt(this.formData.Scheme_id, 10);
       console.log('Form submitted with data:', this.formData);
       try {
-        const response = await axios.post('http://localhost:5000/admin/deletescheme/:Scheme_id', this.formData)
+        const response = await axios.post(`http://localhost:5000/admin/deletescheme/${this.formData.Scheme_id}`, this.formData);
 
         console.log('API response:', response.status, response.statusText, response.data);
 
