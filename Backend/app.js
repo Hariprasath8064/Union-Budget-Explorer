@@ -66,6 +66,19 @@ app.use("/", deleteExpense);
 const deleteScheme = require("./Routes/Deletion Routes/deleteschemeRoutes");
 app.use("/", deleteScheme);
 
+
+const updateRevenue = require("./Routes/Updation Routes/UpdateRevenueRoute");
+app.use("/", updateRevenue);
+
+
+const updateExpense = require("./Routes/Updation Routes/UpdateExpenseRoute");
+app.use("/", updateExpense);
+
+
+const updateScheme = require("./Routes/Updation Routes/UpdateSchemeRoute");
+app.use("/", updateScheme);
+
+
 // Server Setup
 const port = process.env.PORT || 5000;
 
