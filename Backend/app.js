@@ -16,11 +16,6 @@ app.use(express.static(__dirname + "/Public/"));
 app.use(cors());
 
 
-
-//const homepageRoute = require("./Routes");
-//app.use("/", homepageRoutes);
-
-
 // Get all Expenditures Routes
 const getallexpenditureRoute = require("./Routes/Table Data Routes/getallexpenditureRoutes");
 app.use("/", getallexpenditureRoute); 
