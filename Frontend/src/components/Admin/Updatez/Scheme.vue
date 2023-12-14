@@ -7,36 +7,36 @@
       <form @submit.prevent="submitForm">
         <div class="form-group">
           <label for="SchemeName">SchemeName:</label>
-          <input type="text" id="SchemeName" v-model="formData.SchemeName" required />
+          <input type="text" id="SchemeName" v-model="formData.Scheme_name" required />
         </div>
           
         <div class="column-group">
           <div class="form-group">
             <label for="schemeID">SchemeID:</label>
-            <input type="text" id="schemeID" v-model="formData.SchemeID" required />
+            <input type="text" id="schemeID" v-model="formData.Scheme_id" required />
           </div>
 
           <div class="form-group">
             <label for="allocatedAmt">Allocated amt (in Crs):</label>
-            <input type="text" id="allocatedAmt" v-model="formData.AllocatedAmt" required />
+            <input type="text" id="allocatedAmt" v-model="formData.Allocated_amount" required />
           </div>
         </div>
   
         <div class="column-group">
           <div class="form-group">
             <label for="startYr">Start Year:</label>
-            <input type="text" id="startYr" v-model="formData.StartYear" required />
+            <input type="text" id="startYr" v-model="formData.Start_year" required />
           </div>
   
           <div class="form-group">
             <label for="endYr">End Year:</label>
-            <input type="text" id="endYr" v-model="formData.EndYear" required />
+            <input type="text" id="endYr" v-model="formData.End_year" required />
           </div>
         </div>
   
         <div class="form-group" style="display: block;">
           <label for="ObjDesc">Objective Description:</label>
-          <textarea id="ObjDesc" v-model="formData.ObjDesc" required></textarea>
+          <textarea id="ObjDesc" v-model="formData.Objective_description" required></textarea>
         </div>
   
         <div class="form-group">
@@ -53,24 +53,27 @@ export default {
   data() {
     return {
       formData: {
-        SchemeID: '',
-        SchemeName: '',
-        StartYear: '',
-        EndYear: '',
-        ObjDesc: '',
-        AllocatedAmt: ''
+        Scheme_id: '',
+        Scheme_name: '',
+        Start_year: '',
+        End_year: '',
+        Objective_description: '',
+        Allocated_amount: ''
       },
     };
   },
   methods: {
     async submitForm() {
-      this.formData.AllocatedAmt = parseInt(this.formData.AllocatedAmt, 10);
-      this.formData.SchemeID = parseInt(this.formData.SchemeID, 10);
+      this.formData.Allocated_amount = parseInt(this.formData.Allocated_amount, 10);
+      this.formData.Scheme_id = parseInt(this.formData.Scheme_id, 10);
+      this.formData.Start_year = parseInt(this.formData.Start_year, 10);
+      this.formData.End_year = parseInt(this.formData.End_year, 10);
       console.log('Form submitted with data:', this.formData);
       try {
-        const response = await axios.post('/', this.formData);
+        const response = await axios.post('http://localhost:5000/admin/updatescheme', this.formData)
 
-        console.log('API response:', response.data);
+        console.log('API response:', response.status, response.statusText, response.data);
+
       } catch (error) {
         console.error('Error submitting form:', error);
       }
