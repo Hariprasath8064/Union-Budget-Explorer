@@ -2,19 +2,14 @@
   <div class="container">
     <div class="choice">
       <label>
-        <input type="radio" v-model="selectedOption" value="update" />
+        <input type="radio" v-model="selectedOption" value="Insert" />
         <span class="radio-label"></span>
-        Update
+        Add Data
       </label>
       <label>
-        <input type="radio" v-model="selectedOption" value="insert" />
+        <input type="radio" v-model="selectedOption" value="Update" />
         <span class="radio-label"></span>
-        Insert
-      </label>
-      <label>
-        <input type="radio" v-model="selectedOption" value="delete" />
-        <span class="radio-label"></span>
-        Delete
+        Modify Data
       </label>
     </div>
     <div class="selected-component">
@@ -32,7 +27,7 @@ export default {
   },
   data() {
     return {
-      selectedOption: 'update', // Default to 'Update'
+      selectedOption: 'add',
     };
   },
 };
@@ -41,16 +36,16 @@ export default {
 <style scoped>
 .container {
   display: flex;
-  gap: 100px; 
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+  gap: 20px; 
+  margin-top: 20px;
 }
 
 .choice {
   display: flex;
-  flex-direction: column;
-  align-items: center; 
-  justify-content: center;
-  gap: 20px; 
-  width: 300px;
+  gap: 20px;
 }
 
 .choice >>> .radio-label {
@@ -66,23 +61,23 @@ export default {
 
 /* Customize radio button appearance */
 .choice input[type="radio"] {
-  display: none; 
+  display: none;
 }
 
 .choice label {
   display: flex;
   align-items: center;
   cursor: pointer;
-  font-size: 24px; /* Set your desired font size here */
+  font-size: 24px; 
 }
 
 .choice input[type="radio"]:checked + .radio-label {
-  background-color: #007BFF; /* Customize the fill color when checked */
+  background-color: #007BFF; 
 }
 
 .selected-component {
   width: 100%;
+  display: flex;
+  justify-content: center;
 }
 </style>
-
-
