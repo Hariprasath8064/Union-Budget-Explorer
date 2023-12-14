@@ -22,33 +22,33 @@ app.use(cors());
 
 
 // Get all Expenditures Routes
-const getallexpenditureRoute = require("./Routes/getallexpenditureRoutes");
+const getallexpenditureRoute = require("./Routes/Table Data Routes/getallexpenditureRoutes");
 app.use("/", getallexpenditureRoute); 
 
 
 // Get all Non-Tax Revenues Routes
-const getallnontaxRevenue = require("./Routes/getallnontaxRoutes");
+const getallnontaxRevenue = require("./Routes/Table Data Routes/getallnontaxRoutes");
 app.use("/", getallnontaxRevenue);
 
 // Get all Schemes Routes
-const getallScheme = require("./Routes/getallschemeRoutes");
+const getallScheme = require("./Routes/Table Data Routes/getallschemeRoutes");
 app.use("/", getallScheme);
 
 
 // Search Expenditure Routes
-const getexpenditure = require("./Routes/getexpenditureRoutes");
+const getexpenditure = require("./Routes/Search Routes/getexpenditureRoutes");
 app.use("/", getexpenditure);
 
 
 
 // Search Non-Tax Revenue Routes
-const getnontaxRevenue = require("./Routes/getnontaxRevenueRoutes");
+const getnontaxRevenue = require("./Routes/Search Routes/getnontaxRevenueRoutes");
 app.use("/", getnontaxRevenue);
 
 
 
 // Search Scheme Routes
-const getScheme = require("./Routes/getschemeRoutes");
+const getScheme = require("./Routes/Search Routes/getschemeRoutes");
 app.use("/", getScheme);
 
 
@@ -56,6 +56,20 @@ const getobjective = require("./Routes/getschemeinfoRoute");
 app.use("/", getobjective);
 
 
+
+// Delete Revenue Route
+const deleteRevenue = require("./Routes/Deletion Routes/deleteRevenueRoutes");
+app.use("/", deleteRevenue);
+
+
+// Delete Expense Route
+const deleteExpense = require("./Routes/Deletion Routes/deleteExpenseRoutes");
+app.use("/", deleteExpense);
+
+
+// Delete Scheme Route
+const deleteScheme = require("./Routes/Deletion Routes/deleteschemeRoutes");
+app.use("/", deleteScheme);
 
 // Server Setup
 const port = process.env.PORT || 5000;
