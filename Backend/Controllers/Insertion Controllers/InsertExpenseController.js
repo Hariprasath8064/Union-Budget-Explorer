@@ -16,13 +16,23 @@ const InsertExpense = async (req,res) => {
         });
 
 
-        await pool.query("insert into Expense values ($1, $2, $3, $4, $5);", [ExpenseData.Expense_id, ExpenseData.Sector_id, ExpenseData.Category_id, ExpenseData.Amount, ExpenseData.Expense_date], (err, res) => {
+        await pool.query("insert into Expense values ($1, $2, $3, $4, $5);", [ExpenseData.Expense_id, ExpenseData.Sector_id, ExpenseData.Category_id, ExpenseData.Amount, ExpenseData.ExpenseData], (err, result) => {
             if(err){
                 console.log(err);
-                res.status(404).send("Insertion Failed!! Data is not clean");
+                res.status(404).end("Insertion Failed!! Data is not clean");
             }
             else{
-                console.log(res);
+                console.log(result);
+            }
+        })
+
+        await pool.query("insert into Juridiction values($1, $2);", [ExpenseData.Sector_id, ExpenseData.Sector_name], (err, result) => {
+            if(err){
+                console.log(err);
+                res.status(404).end("Insertion Failed!! Data is not clean");
+            }
+            else{
+                console.log(result);
             }
         })
 
