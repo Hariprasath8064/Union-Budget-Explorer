@@ -3,7 +3,7 @@ const pool = require("../../Postgres DB/DB").pool;
 
 const InsertRevenue = async (req,res) => {
     try {
-        const Revenuedata = req.query;
+        const Revenuedata = req.body;
 
         await pool.query("insert into Revenue_source values ($1, $2);", [Revenuedata.Revenue_Source_id, Revenuedata.Source_name], (err,result) => {
             if(err){
