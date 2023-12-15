@@ -20,10 +20,12 @@
 
 <script>
 import Update from '@/components/Admin/Updatez/Update.vue';
+import Insert from '@/components/Admin/Insert/Insert.vue'
 
 export default {
   components: {
     Update,
+    Insert
   },
   data() {
     return {

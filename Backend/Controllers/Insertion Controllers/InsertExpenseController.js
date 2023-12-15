@@ -13,7 +13,7 @@ const InsertExpense = async (req,res) => {
         });
 
 
-        await pool.query("insert into Expense values ($1, $2, $3, $4, $5);", [ExpenseData.Expense_id, ExpenseData.Sector_id, ExpenseData.Category_id, ExpenseData.Amount, ExpenseData.ExpenseData], (err, res) => {
+        await pool.query("insert into Expense values ($1, $2, $3, $4, $5);", [ExpenseData.Expense_id, ExpenseData.Sector_id, ExpenseData.Category_id, ExpenseData.Amount, ExpenseData.Expense_date], (err, res) => {
             if(err){
                 console.log(err);
             }

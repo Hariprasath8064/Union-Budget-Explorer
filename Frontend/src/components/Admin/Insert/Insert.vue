@@ -1,15 +1,14 @@
 <template>
   <div class="main-frame">
-    
+    <Scheme />
   </div>
 </template>
 
 <script>
-
-
+import Scheme from '@/components/Admin/Insert/IScheme.vue';
 export default {
   components: {
-
+    Scheme,
   },
 };
 </script>
