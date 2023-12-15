@@ -1,7 +1,5 @@
 <template>
     <div class="navbar">
-      <router-link to="/Admin" class="right" v-if="isLoggedin">Admin</router-link>
-      <router-link to="/Admin" class="right" v-else>Login</router-link>
       <router-link to="/" class="icon">Union Budget Explorer</router-link>
       <router-link to="/About" class="right">Team</router-link>
       <router-link to="/Schemes" class="right">Schemes</router-link>
@@ -15,7 +13,6 @@
     export default {
       data() {
         return {
-          isLoggedin: false,
 
         }
       },

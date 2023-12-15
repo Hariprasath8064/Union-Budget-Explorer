@@ -5,6 +5,16 @@ const InsertRevenue = async (req,res) => {
     try {
         const Revenuedata = req.body;
 
+        await pool.query("insert into Jurisdiction values ($1, $2);", [Revenuedata.Sector_id, Revenuedata.Sector_name], (err, result) => {
+            if(err){
+                console.log(err);
+                res.status(404).end("Insertion Failed!! Data is not Clean");
+            }
+            else{
+                console.log(result);
+            }
+        })
+
         await pool.query("insert into Revenue_source values ($1, $2);", [Revenuedata.Revenue_Source_id, Revenuedata.Source_name], (err,result) => {
             if(err){
                 console.log(err);
@@ -17,16 +27,6 @@ const InsertRevenue = async (req,res) => {
 
 
         await pool.query("insert into Revenue values ($1, $2, $3, $4, $5);", [Revenuedata.Revenue_id, Revenuedata.Sector_id, Revenuedata.Revenue_Source_id, Revenuedata.Amount, Revenuedata.Collection_date], (err, result) => {
-            if(err){
-                console.log(err);
-                res.status(404).end("Insertion Failed!! Data is not Clean");
-            }
-            else{
-                console.log(result);
-            }
-        })
-
-        await pool.query("insert into Jurisdiction values ($1, $2);", [Revenuedata.Sector_id, Revenuedata.Sector_name], (err, result) => {
             if(err){
                 console.log(err);
                 res.status(404).end("Insertion Failed!! Data is not Clean");

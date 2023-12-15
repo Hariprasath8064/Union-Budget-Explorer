@@ -32,7 +32,7 @@ export default {
       this.formData.Scheme_id = parseInt(this.formData.Scheme_id, 10);
       console.log('Form submitted with data:', this.formData);
       try {
-        const response = await axios.post(`http://localhost:5000/admin/deletescheme/${this.formData.Scheme_id}`, this.formData);
+        const response = await axios.post(`http://localhost:5000/admin/deletescheme/${this.formData.Scheme_id}`, {params: this.Scheme_id});
 
         console.log('API response:', response.status, response.statusText, response.data);
 

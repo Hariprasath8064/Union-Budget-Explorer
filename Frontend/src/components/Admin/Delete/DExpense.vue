@@ -32,7 +32,7 @@ export default {
       this.formData.Expense_id = parseInt(this.formData.Expense_id, 10);
       console.log('Form submitted with data:', this.formData);
       try {
-        const response = await axios.post(`http://localhost:5000/admin/admin/deleteexpense/${this.formData.Expense_id}`, this.formData)
+        const response = await axios.post(`http://localhost:5000/admin/deleteexpense/${this.formData.Expense_id}`, {params: this.Expense_id})
 
         console.log('API response:', response.status, response.statusText, response.data);
 
