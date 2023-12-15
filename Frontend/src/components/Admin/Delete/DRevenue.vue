@@ -7,7 +7,7 @@
       <form @submit.prevent="submitForm">
         <div class="form-group">
           <label for="RevenueID">Revenue ID:</label>
-          <input type="text" id="RevenueID" v-model="formData.REvenue_id" required />
+          <input type="text" id="RevenueID" v-model="formData.Revenue_id" required />
         </div>
         <div class="form-group">
           <button type="submit">Delete</button>
@@ -32,7 +32,7 @@ export default {
       this.formData.Revenue_id = parseInt(this.formData.Revenue_id, 10);
       console.log('Form submitted with data:', this.formData);
       try {
-        const response = await axios.post(`http://localhost:5000/admin/admin/deleterevenue/${this.formData.Revenue_id}`, {params: this.Revenue_id})
+        const response = await axios.post(`http://localhost:5000/admin/deleterevenue/${this.formData.Revenue_id}`, {params: this.Revenue_id});
 
         console.log('API response:', response.status, response.statusText, response.data);
 

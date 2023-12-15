@@ -5,6 +5,16 @@ const InsertExpense = async (req,res) => {
     try {
         const ExpenseData = req.body;
 
+        await pool.query("insert into Jurisdiction values($1, $2);", [ExpenseData.Sector_id, ExpenseData.Sector_name], (err, result) => {
+            if(err){
+                console.log(err);
+                res.status(404).end("Insertion Failed!! Data is not clean");
+            }
+            else{
+                console.log(result);
+            }
+        })
+
         await pool.query("insert into Expense_category values ($1, $2);", [ExpenseData.Category_id, ExpenseData.Category_name], (err,result) => {
             if(err){
                 console.log(err);
@@ -26,15 +36,6 @@ const InsertExpense = async (req,res) => {
             }
         })
 
-        await pool.query("insert into Juridiction values($1, $2);", [ExpenseData.Sector_id, ExpenseData.Sector_name], (err, result) => {
-            if(err){
-                console.log(err);
-                res.status(404).end("Insertion Failed!! Data is not clean");
-            }
-            else{
-                console.log(result);
-            }
-        })
 
         res.status(200).end("Inserted Successfully..");
 
