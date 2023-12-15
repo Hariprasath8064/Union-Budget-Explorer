@@ -3,6 +3,7 @@ import MainBody from './components/Index/MainBody.vue'
 import NonTax from './components/NonTaxIncome/NonTax.vue'
 import Expenditure from './components/Expenditure/Expenditure.vue'
 import Schemes from './components/Schemes/Schemes.vue'
+import Admin from './components/Admin/Admin.vue'
 
 const routes = [
   { path: '', component: MainBody},
@@ -10,6 +11,7 @@ const routes = [
   { path: '/NonTax', component: NonTax},
   { path: '/Expenditure', component: Expenditure},
   { path: '/Schemes', component: Schemes},
+  { path: '/Admin', component: Admin}
 ];
 
 export default routes;

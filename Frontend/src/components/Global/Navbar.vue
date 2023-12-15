@@ -1,14 +1,29 @@
 <template>
     <div class="navbar">
+      <router-link to="/Admin" class="right" v-if="isLoggedin">Admin</router-link>
+      <router-link to="/Admin" class="right" v-else>Login</router-link>
       <router-link to="/" class="icon">Union Budget Explorer</router-link>
       <router-link to="/About" class="right">Team</router-link>
       <router-link to="/Schemes" class="right">Schemes</router-link>
       <router-link to="/Expenditure" class="right">Expenditure</router-link>
       <router-link to="/NonTax" class="right">Non-tax Income</router-link>
       
-      
     </div>
   </template>
+
+  <script>
+    export default {
+      data() {
+        return {
+          isLoggedin: false,
+
+        }
+      },
+      methods: {
+        
+      },
+    }
+  </script>
   
   <style scoped>
     .navbar {
