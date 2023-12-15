@@ -22,6 +22,17 @@ const deleteRevenue = async (req, res) => {
             return;
         }
 
+        const Sourceresult = await pool.query("select Revenue_Source_id from Revenue where Revenue_id = $1;", [Revenue_id]);
+
+        const Revenue_Source_id = Sourceresult.rows[0].Revenue_Source_id;
+
+        await pool.query("delete from Revenue_source where Revenue_Source_id = $1;", [Revenue_Source_id]);
+
+        const Sectorresult = await pool.quary("select Sector_id from Revenue where Revenue_id = $1;", [Revenue_id]);
+        const Sector_id = Sectorresult.rows[0].Sector_id;
+
+        await pool.query("delete from Jurisdiction where Sector_id = $1;", [Sector_id]);
+
         res.status(200).json("Successfully Deleted");
     } catch (err) {
         console.error(err);
