@@ -26,6 +26,18 @@
           <label for="allocatedAmt">Allocated amt (in Crs):</label>
           <input type="text" id="allocatedAmt" v-model="formData.Allocated_amount" required />
         </div>
+
+        <div class="column-group">
+          <div class="form-group">
+            <label for="AllocID">Allocation ID:</label>
+            <input type="text" id="AllocID" v-model="formData.Allocation_id" required />
+          </div>
+  
+          <div class="form-group">
+            <label for="fiscalYear">Fiscal Year:</label>
+            <input type="text" id="fiscalYear" v-model="formData.Fiscal_year" required />
+          </div>
+        </div>
   
         <div class="column-group">
           <div class="form-group">
@@ -65,6 +77,8 @@ export default {
         Objective_description: '',
         Allocated_amount: '',
         Objective_id: '',
+        Allocation_id: '',
+        Fiscal_year: '',
       },
     };
   },
@@ -75,6 +89,8 @@ export default {
       this.formData.Start_year = parseInt(this.formData.Start_year, 10);
       this.formData.End_year = parseInt(this.formData.End_year, 10);
       this.formData.Objective_id = parseInt(this.formData.Objective_id, 10);
+      this.formData.Fiscal_year = parseInt(this.formData.Fiscal_year, 10);
+      this.formData.Allocation_id = parseInt(this.formData.Allocation_id, 10);
       console.log('Form submitted with data:', this.formData);
       try {
         const response = await axios.post('http://localhost:5000/admin/insertscheme', this.formData)
