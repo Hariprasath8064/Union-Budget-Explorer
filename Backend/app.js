@@ -11,7 +11,7 @@ require('dotenv').config();
 
 //Middleware:
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/Public/"));
 app.use(cors());
 
@@ -78,6 +78,17 @@ app.use("/", updateExpense);
 const updateScheme = require("./Routes/Updation Routes/UpdateSchemeRoute");
 app.use("/", updateScheme);
 
+
+const InsertRevenue = require("./Routes/Insertion Routes/InsertRevenueRoute");
+app.use("/", InsertRevenue);
+
+
+const InsertExpense = require("./Routes/Insertion Routes/InsertExpenseRoute");
+app.use("/", InsertExpense);
+
+
+const InsertScheme = require("./Routes/Insertion Routes/InsertSchemeRoute");
+app.use("/", InsertScheme);
 
 // Server Setup
 const port = process.env.PORT || 5000;
