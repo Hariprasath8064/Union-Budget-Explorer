@@ -1,48 +1,48 @@
 <template>
   <div class="main-body">
     <div class="title">
-      <h2>Scheme</h2>
+      <h2>Expense</h2>
     </div>
     <div class="form-container">
       <form @submit.prevent="submitForm">
         <div class="form-group">
-          <label for="SchemeName">SchemeName:</label>
-          <input type="text" id="SchemeName" v-model="formData.Scheme_name" required />
+          <label for="SectorName">Sector Name:</label>
+          <input type="text" id="SectorName" v-model="formData.Sector_name" required />
+        </div>
+
+        <div class="form-group">
+          <label for="CategoryName">Category name:</label>
+          <input type="text" id="CategoryName" v-model="formData.Category_name" required />
         </div>
           
         <div class="column-group">
           <div class="form-group">
-            <label for="schemeID">SchemeID:</label>
-            <input type="text" id="schemeID" v-model="formData.Scheme_id" required />
+            <label for="sectorID">Sector ID:</label>
+            <input type="text" id="sectorID" v-model="formData.Sector_id" required />
           </div>
 
           <div class="form-group">
-            <label for="objectiveID">Objective ID:</label>
-            <input type="text" id="objectiveID" v-model="formData.Objective_id" required />
+            <label for="categoryID">Category ID:</label>
+            <input type="text" id="categoryID" v-model="formData.Category_id" required />
           </div>
-        </div>
-
-        <div class="form-group">
-          <label for="allocatedAmt">Allocated amt (in Crs):</label>
-          <input type="text" id="allocatedAmt" v-model="formData.Allocated_amount" required />
         </div>
   
         <div class="column-group">
           <div class="form-group">
-            <label for="startYr">Start Year:</label>
-            <input type="text" id="startYr" v-model="formData.Start_year" required />
+            <label for="expID">Expense ID:</label>
+            <input type="text" id="expID" v-model="formData.Expense_id" required />
           </div>
   
           <div class="form-group">
-            <label for="endYr">End Year:</label>
-            <input type="text" id="endYr" v-model="formData.End_year" required />
+            <label for="ecpDate">Date:</label>
+            <input type="date" id="expDate" v-model="formData.Expense_date" required />
           </div>
         </div>
-  
-        <div class="form-group" style="display: block;">
-          <label for="ObjDesc">Objective Description:</label>
-          <textarea id="ObjDesc" v-model="formData.Objective_description" required></textarea>
-        </div>
+
+        <div class="form-group">
+            <label for="amount">Amount:</label>
+            <input type="text" id="amount" v-model="formData.Amount" required />
+          </div>
   
         <div class="form-group">
           <button type="submit">Update</button>
@@ -62,6 +62,7 @@ export default {
         Category_name: '',
         Expense_id: '',
         Sector_id: '',
+        Sector_name: '',
         Amount: '',
         Expense_date: '',
       },
