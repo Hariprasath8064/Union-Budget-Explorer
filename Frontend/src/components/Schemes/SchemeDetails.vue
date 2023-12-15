@@ -36,6 +36,7 @@
   
           this.schemeDetails = schemeDetails;
           this.schemeNames = schemeNames;
+          console.log(schemeNames, schemeDetails);
         } catch (error) {
           console.error('Error fetching Scheme details:', error);
         }
