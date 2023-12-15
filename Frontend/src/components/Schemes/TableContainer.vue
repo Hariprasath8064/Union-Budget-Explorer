@@ -11,7 +11,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="item in tableData" :key="item.revenue_id">
+          <tr v-for="item in tableData" :key="item.scheme_id">
             <td>{{ item.scheme_id }}</td>
             <td>{{ item.scheme_name }}</td>
             <td>{{ item.allocated_amount }}</td>

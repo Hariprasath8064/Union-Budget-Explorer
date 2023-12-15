@@ -1,29 +1,16 @@
 <template>
   <div class="main-body">
     <div class="title">
-      <h2>Expense</h2>
+      <h2>Revenue</h2>
     </div>
     <div class="form-container">
       <form @submit.prevent="submitForm">
         <div class="form-group">
-          <label for="ExpenseID">Expense ID:</label>
-          <input type="text" id="ExpenseID" v-model="formData.Expense_id" required />
+          <label for="RevenueID">Revenue ID:</label>
+          <input type="text" id="RevenueID" v-model="formData.REvenue_id" required />
         </div>
-          
-        <div class="column-group">
-          <div class="form-group">
-            <label for="Amount">Amount:</label>
-            <input type="text" id="Amount" v-model="formData.Amount" required />
-          </div>
-
-          <div class="form-group">
-            <label for="date">Date:</label>
-            <input type="date" id="date" v-model="formData.Expense_date" required />
-          </div>
-        </div>
-  
         <div class="form-group">
-          <button type="submit">Update</button>
+          <button type="submit">Delete</button>
         </div>
       </form>
     </div>
@@ -32,28 +19,20 @@
 
 <script>
 import axios from 'axios';
-
 export default {
   data() {
     return {
       formData: {
-        Expense_id: '',
-        Amount: '',
-        Expense_date: '',
+        Revenue_id: '',
       },
     };
   },
   methods: {
-    submitForm() {
-      // Handle form submission logic here
-      console.log('Form submitted with data:', this.formData);
-    },
     async submitForm() {
-      this.formData.Expense_id = parseInt(this.formData.Expense_id, 10);
-      this.formData.Amount = parseFloat(this.formData.Amount);
+      this.formData.Revenue_id = parseInt(this.formData.Revenue_id, 10);
       console.log('Form submitted with data:', this.formData);
       try {
-        const response = await axios.post('http://localhost:5000/admin/updateexpense', this.formData)
+        const response = await axios.post(`http://localhost:5000/admin/admin/deleterevenue/${this.formData.Revenue_id}`, this.formData)
 
         console.log('API response:', response.status, response.statusText, response.data);
 

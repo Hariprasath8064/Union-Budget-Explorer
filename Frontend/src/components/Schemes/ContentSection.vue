@@ -26,14 +26,15 @@
     },
     methods: {
       async fetchData() {
-        try {
-          const response = await axios.get('http://localhost:5000/scheme');
-          this.tableData1 = response.data;
-          this.originalData = response.data; // Save the original data
-        } catch (error) {
-          console.error('Error fetching data:', error);
-        }
-      },
+      try {
+        const response = await axios.get('http://localhost:5000/scheme');
+        this.tableData1 = response.data;
+        console.log('tableData1:', this.tableData1);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    },
+
     },
   };
   </script>
