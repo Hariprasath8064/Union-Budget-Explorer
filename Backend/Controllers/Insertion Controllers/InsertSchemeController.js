@@ -33,6 +33,17 @@ const InsertScheme = async (req, res) => {
             }
         );
 
+
+        await pool.query("insert into Budget_allocation values ($1, $2, $3, $4);", [Schemedata.Allocation_id, Schemedata.Scheme_id, Schemedata.Fiscal_year, Schemedata.Allocated_amount], (req,res) => {
+            if(err){
+                console.log(err);
+                res.status(404).end("Insertion Failed!!. Data is not clean");
+            }
+            else{
+                console.log(result);
+            }
+        });
+
         res.status(200).end("Inserted Successfully..");
 
     } catch (err) {
