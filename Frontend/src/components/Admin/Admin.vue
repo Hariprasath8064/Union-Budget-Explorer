@@ -1,12 +1,15 @@
 <template>
-    
+  <Update />
 </template>
 
 <script>
-    export default {
-  methods: {
-  },
-};
+  import Update from '@/components/Admin/Updatez/Update.vue'
+  export default{
+    components: {
+      Update,
+
+    }
+  }
 </script>
 
 <style>
