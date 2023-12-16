@@ -2,7 +2,7 @@
 
 ## 🌌 Discover the Financial Cosmos of India!
 
-Welcome to Union Budget Explorer, a student project crafted for the DBMS course in Semester 3 at Amrita University, Coimbatore. This project serves as your gateway to unravelling the intricate details of India's financial landscape. From revenue sources to expenditure categories, visualize and explore the budget like never before!
+Welcome to Union Budget Explorer, a student group project crafted for the DBMS course in Semester 3 at Amrita University, Coimbatore. This project serves as your gateway to unravelling the intricate details of India's financial landscape. From revenue sources to expenditure categories, visualize and explore the budget like never before!
 
 ## 🚀 Key Features:
 
@@ -14,7 +14,7 @@ Welcome to Union Budget Explorer, a student project crafted for the DBMS course 
 
 - **Schemes Showcase:** Uncover the intricacies of government schemes contributing to both income and expenditure, visualized through a captivating spider web graph.
 
-- **Admin Dashboard:** Take control with the admin site (/Admin), enabling CRUD operations for effective management of the entire database.
+- **Admin Dashboard:** Take control with the admin site (/Admin), enabling CRUD operations to effectively manage the entire database.
 
 ## 🤝 Contributors:
 
@@ -27,4 +27,4 @@ Welcome to Union Budget Explorer, a student project crafted for the DBMS course 
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/YourUsername/Union-Budget-Explorer.git
+   git clone https://github.com/Naganathan05/Union-Budget-Explorer.git
